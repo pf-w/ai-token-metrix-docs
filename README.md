@@ -1,1 +1,1 @@
-AI Token Metrix Privacy Policy
+AI Token Metrix Docs
