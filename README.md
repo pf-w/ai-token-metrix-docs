@@ -1,1 +1,1 @@
-/Users/wpf/workspace/MY/Apple/Token Usage Monitor/docs/PrivacyPolicy/README.md
+AI Token Metrix Privacy Policy
