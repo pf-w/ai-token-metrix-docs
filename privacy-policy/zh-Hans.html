@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="AI Token Metrix 隐私政策 —— 一款 macOS 菜单栏工具，本地解析 AI 编程工具日志，您的使用数据永远不会离开您的设备。">
+  <title>隐私政策 · AI Token Metrix</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="doc-header">
+      <nav class="lang-switcher">
+        <a href="en.html">English</a>
+        <a href="zh-Hans.html" class="current">简体中文</a>
+      </nav>
+      <div class="app-brand"><strong>AI Token Metrix</strong> · 隐私政策</div>
+      <h1>隐私政策</h1>
+      <div class="meta">
+        <div><strong>生效日期：</strong>2026-07-14（第 1.0 版）</div>
+        <div><strong>最后更新：</strong>2026-07-14</div>
+      </div>
+    </header>
+
+    <p>AI Token Metrix（"本应用"、"我们"）是一款 macOS 菜单栏工具，通过读取您设备本地存放的 AI 编程工具日志，为您统计 token 用量与预估花费。本《隐私政策》说明本应用处理哪些信息、为什么、以及您享有的权利。</p>
+
+    <div class="tagline">本应用围绕一个核心原则设计：<strong>您的使用数据永远不会离开您的设备。</strong></div>
+
+    <h2 id="controller">一、个人信息处理者</h2>
+    <p><strong>处理者：</strong>W PF，个人独立开发者。<br>
+    <strong>联系方式：</strong><code>tokenusagemonitor@gmail.com</code></p>
+
+    <p>本条明确了：</p>
+    <ul>
+      <li>《中华人民共和国个人信息保护法》（PIPL）意义上的"个人信息处理者"</li>
+      <li>《GDPR / 英国 GDPR》意义上的"数据控制者"（Data Controller）</li>
+      <li>《加州 CCPA / CPRA》意义上的"business"</li>
+    </ul>
+
+    <h2 id="information">二、本应用处理的信息类别</h2>
+    <p>本应用<strong>仅</strong>处理以下类别的信息，且<strong>仅在您的设备本机处理</strong>。本节所列的任何信息均不会传输给我们或任何第三方。</p>
+
+    <h3>2.1 AI 工具日志文件(仅读取,用户明确授权)</h3>
+    <p>在您通过 macOS 系统的文件选择对话框(<code>NSOpenPanel</code>)显式授权本应用访问某个目录后,本应用会读取您已安装的 AI 编程工具生成的日志文件。根据您启用了哪些 Provider,读取路径包括:</p>
+
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>路径</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Claude Code</td><td><code>~/.claude/projects/*.jsonl</code></td></tr>
+        <tr><td>OpenAI Codex CLI</td><td><code>~/.codex/sessions/**/rollout-*.jsonl</code>、<code>~/.codex/archived_sessions/</code></td></tr>
+        <tr><td>Kimi CLI</td><td><code>~/.kimi/sessions/**/wire.jsonl</code>,另读取 <code>~/.kimi/config.json</code> 获取当前模型名</td></tr>
+        <tr><td>Kimi Code</td><td><code>~/.kimi-code/sessions/**/wire.jsonl</code></td></tr>
+        <tr><td>Gemini CLI</td><td><code>~/.gemini/tmp/**/chats/*.{json,jsonl}</code></td></tr>
+        <tr><td>Google Antigravity</td><td><code>~/.gemini/antigravity/.token-monitor/rpc-cache/v1/*.jsonl</code></td></tr>
+        <tr><td>OpenCode</td><td><code>~/.local/share/opencode/storage/message/**/*.json</code></td></tr>
+        <tr><td>GitHub Copilot CLI</td><td><code>~/.copilot/otel/*.jsonl</code>(仅当您设置了环境变量 <code>COPILOT_OTEL_ENABLED=true</code> 时)</td></tr>
+      </tbody>
+    </table>
+
+    <p>对于每条日志记录,本应用会提取:</p>
+    <ul>
+      <li><strong>Token 计数</strong>(输入 / 输出 / 缓存 / 推理)</li>
+      <li><strong>模型名称</strong>(例如 <code>claude-sonnet-4-5</code>)</li>
+      <li><strong>时间戳</strong></li>
+      <li><strong>会话 ID</strong> —— 由 AI 工具生成,非本应用生成</li>
+      <li><strong>工作目录(<code>cwd</code>)</strong> —— 您运行 AI 工具时所在的目录</li>
+    </ul>
+
+    <p><strong>关于 <code>cwd</code>:</strong>工作目录路径可能包含您的项目名(例如 <code>/Users/您的用户名/Projects/公司机密项目</code>)。根据 PIPL 与 GDPR 的定义,我们将其视为个人信息。此信息<strong>仅存储在本地</strong>,仅用于在应用内按项目分组展示您的用量,<strong>从不传输</strong>。</p>
+
+    <p>本应用<strong>不</strong>读取您与 AI 工具的对话内容 —— 只读取上述用量元数据。</p>
+
+    <h3>2.2 应用配置</h3>
+    <p>存储于您设备本地:</p>
+    <ul>
+      <li>目录授权数据(macOS security-scoped bookmark)</li>
+      <li>您启用 / 暂停了哪些 Provider</li>
+      <li>显示币种偏好、周首日偏好、语言偏好</li>
+      <li>您配置的限额规则(金额上限、告警阈值、静音状态)</li>
+      <li>菜单栏弹窗的行为偏好</li>
+    </ul>
+
+    <h3>2.3 聚合统计</h3>
+    <p>本应用会从上述原始日志派生出以下数据:</p>
+    <ul>
+      <li>按 <code>(Provider × 模型 × 会话)</code> 分桶的每日汇总</li>
+      <li>每日总览 —— 一天一条,覆盖所有 Provider</li>
+    </ul>
+    <p>这些聚合数据存储在本应用沙盒容器与 App Group 容器内的本地 SwiftData 数据库中。</p>
+
+    <h3>2.4 网络请求(仅出站,不发送个人数据)</h3>
+    <p>为了以您偏好的币种显示花费、并使模型定价保持最新,本应用大约<strong>每 12 小时</strong>向以下公开数据源发起出站 HTTPS 请求:</p>
+    <ul>
+      <li><code>https://models.dev/api.json</code> —— 约 2,900 个 AI 模型的定价数据</li>
+      <li><code>https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api/...</code> —— 外汇汇率</li>
+      <li><code>https://api.frankfurter.dev/...</code> —— 备用外汇汇率(数据源为欧洲中央银行)</li>
+      <li><code>https://raw.githubusercontent.com/BerriAI/litellm/...</code> 经 jsDelivr / jsdmirror 转发 —— 备用定价数据</li>
+    </ul>
+    <p><strong>这些请求不包含任何个人信息。</strong>它们只是下载公开的参考数据。您的用量数据、项目名、会话 ID 或任何关于您的信息<strong>从不被上传</strong>。</p>
+    <p>本应用<strong>不使用</strong>任何分析 SDK、遥测 SDK、崩溃上报 SDK、广告 SDK 或第三方追踪库。</p>
+
+    <h3>2.5 本地通知</h3>
+    <p>若您配置了限额规则,本应用可能通过 macOS <code>UserNotifications</code> 框架发送本地通知。这些通知<strong>完全在您的设备上生成</strong>,<strong>不</strong>通过 Apple Push Notification 服务(APNs)投递。通知内容包含 Provider ID(例如 <code>claude</code>)与限额百分比指示。</p>
+    <p>本应用仅在您首次保存限额规则时才请求通知权限 —— 而非在启动时。</p>
+
+    <h2 id="use">三、信息用途</h2>
+    <ul>
+      <li><strong>计算与展示</strong>您的 AI 用量与预估花费于菜单栏界面、详情窗口、Widget</li>
+      <li><strong>聚合</strong>用量为每日汇总,供趋势可视化使用</li>
+      <li><strong>投递本地通知</strong>当您的用量跨过您自己设定的限额阈值时</li>
+      <li><strong>保留您的偏好</strong>跨应用启动持久化</li>
+    </ul>
+    <p>本应用<strong>不</strong>将您的信息用于任何广告、画像、销售、跨场景行为广告或自动化决策目的。</p>
+
+    <h2 id="storage">四、数据存储位置</h2>
+    <p>所有信息<strong>仅</strong>存储在您的设备上,位于您 macOS 用户账户下的以下位置:</p>
+    <ul>
+      <li>沙盒容器:<code>~/Library/Containers/com.wpf.aitokenmetrix/Data/</code></li>
+      <li>App Group 容器(与 Widget 扩展共享):<code>~/Library/Group Containers/group.com.wpf.aitokenmetrix/</code></li>
+    </ul>
+    <p>这些目录受 macOS 沙盒保护,其他应用无法访问。</p>
+
+    <p><strong>系统级 iCloud 备份:</strong>若您设备的系统设置启用了对本应用数据的 iCloud 备份,则部分数据可能被包含在 Apple 对您设备的 iCloud 备份中。此情况下 Apple 作为受托处理者,适用 Apple 自身的隐私政策 —— 与本政策无关。</p>
+
+    <p><strong>未来功能 —— iCloud 同步:</strong>未来版本可能通过 iCloud(CloudKit 私有数据库)在您<strong>自己的</strong> Apple 设备之间同步"每日总览"表。若启用此功能,同步的数据将保留在您<strong>自己的</strong> iCloud 账户中;Apple 将代表您处理这些数据,我们无法访问。此功能<strong>目前尚未启用</strong>;启用时本《隐私政策》将同步更新,并在应用内提前通知您。</p>
+
+    <h2 id="sharing">五、数据共享与第三方</h2>
+    <p><strong>我们不向任何第三方出售、出租、共享或转让您的个人信息。</strong></p>
+    <p>唯一的第三方交互是第 2.4 节列出的出站 HTTPS 请求,用于下载<strong>公开参考数据</strong>(定价表、汇率)。这些请求不携带任何关于您或您使用行为的信息。</p>
+    <p>本应用<strong>未</strong>集成任何分析、广告、社交登录或崩溃上报服务。</p>
+
+    <h2 id="retention">六、数据保存期限</h2>
+    <ul>
+      <li><strong>本地数据</strong>在您的设备上<strong>无限期</strong>保留,直到您删除。</li>
+      <li>您可随时通过在应用设置中禁用相应 Provider,或撤销目录授权,停止数据收集。</li>
+    </ul>
+
+    <h3>6.1 如何删除您的数据</h3>
+    <p>由于所有数据均为本地存储,您可以通过以下任一方式删除:</p>
+    <ol>
+      <li><strong>卸载应用:</strong>将本应用拖到废纸篓。此操作删除应用二进制,但可能在 <code>~/Library/Containers/</code> 与 <code>~/Library/Group Containers/</code> 中留下数据。</li>
+      <li><strong>手动删除数据目录:</strong>移除第四节列出的目录。</li>
+    </ol>
+    <p><strong>当前局限:</strong>当前版本<strong>尚未</strong>在应用内提供"删除全部数据"按钮。这是我们计划改进的项目(见第七节 —— 删除权)。在该改进上线前,请使用上述任一方式。</p>
+
+    <h2 id="rights">七、您的权利</h2>
+    <p>您根据 <strong>PIPL(中国)</strong>、<strong>GDPR(欧盟 / 英国)</strong>、<strong>CCPA / CPRA(加州)</strong>及类似法律享有以下权利:</p>
+
+    <table>
+      <thead>
+        <tr><th>权利</th><th>行使方式</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>知情权 / 查阅权</strong></td><td>所有数据在您的设备上;您可直接在第四节所述路径中查阅。</td></tr>
+        <tr><td><strong>更正权</strong></td><td>配置数据(Provider 启用、限额规则、偏好)可在应用设置中直接修改。</td></tr>
+        <tr><td><strong>删除权 / "被遗忘权"</strong></td><td>见 6.1 节。我们承认应用内缺少一键删除按钮属于当前版本的局限,计划在未来版本补齐。</td></tr>
+        <tr><td><strong>限制处理权</strong></td><td>在应用设置中暂停任何 Provider;应用将立即停止读取该 Provider 的日志。</td></tr>
+        <tr><td><strong>数据可携带权</strong></td><td>数据以标准 SwiftData / SQLite 文件形式存储于您的账户下,可用您设备上的任何工具直接备份。</td></tr>
+        <tr><td><strong>反对权</strong></td><td>由于本应用仅为您本人处理数据且不做共享,实际不存在需反对的对象;您仍可随时通过禁用 Provider 或卸载本应用撤回同意。</td></tr>
+        <tr><td><strong>投诉权</strong></td><td>您可向所在司法辖区的数据保护监管机构投诉(例如:中国国家网信办 [CAC]、欧盟成员国数据保护机构 [DPA]、英国信息专员办公室 [ICO]、加州总检察长办公室)。</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>我们不出售您的个人信息</strong>(CCPA / CPRA 含义下)。</p>
+
+    <h2 id="children">八、儿童隐私</h2>
+    <p>本应用面向使用 AI 编程工具的成年开发者。我们不会有意处理 13 周岁以下(或您所在司法辖区规定的等效最低年龄)儿童的信息。若您认为有儿童使用了本应用,请联系我们;由于所有数据均在儿童设备本地,删除操作由儿童 / 监护人直接控制。</p>
+
+    <h2 id="security">九、安全措施</h2>
+    <ul>
+      <li>所有数据存储于 macOS 沙盒与 App Group 容器中,受 macOS 用户级访问控制保护</li>
+      <li>所有出站网络请求均使用 HTTPS</li>
+      <li>本应用当前不收集任何凭证或身份令牌(未来版本若支持官方云端 API,凭证将存储在 macOS Keychain 中 —— 绝不明文存储)</li>
+      <li>未嵌入任何第三方分析或追踪 SDK</li>
+    </ul>
+
+    <h2 id="transfers">十、跨境数据传输</h2>
+    <p>由于所有个人数据均在<strong>您的设备上</strong>本地处理,不传输给我们或任何第三方,本《隐私政策》下不存在跨境数据传输。</p>
+    <p>第 2.4 节所述出站请求下载来自可能托管于不同区域 CDN 的公开参考数据;由于这些请求不携带个人信息,它们<strong>不</strong>构成 GDPR / PIPL 意义上的个人信息跨境传输。</p>
+    <p><strong>未来 iCloud 同步功能:</strong>若您在未来版本中启用此功能,同步操作通过<strong>您自己的</strong> iCloud 账户完成。Apple 存储您 iCloud 数据的区域由您 Apple ID 的账户设置和 Apple 自身的隐私政策决定,与我们无关。</p>
+
+    <h2 id="changes">十一、隐私政策变更</h2>
+    <p>我们可能不时更新本《隐私政策》。更新时,我们将:</p>
+    <ul>
+      <li>更改本文档顶部的"生效日期"与"最后更新"字段</li>
+      <li>同步更新嵌入应用内的副本<strong>与</strong>托管于 <code>https://pf-w.github.io/ai-token-metrix-docs/</code> 的副本</li>
+      <li>对于重大变更(例如启用 iCloud 同步、新增数据类别),我们将在变更生效前在应用内呈现通知</li>
+    </ul>
+
+    <h2 id="contact">十二、联系我们</h2>
+    <p>如需咨询本《隐私政策》或行使您的任何权利:</p>
+    <p><strong>W PF</strong><br>
+    邮箱:<code>tokenusagemonitor@gmail.com</code></p>
+    <p>响应时限承诺:</p>
+    <ul>
+      <li>GDPR / CCPA 权利请求:30 天内响应</li>
+      <li>PIPL 权利请求:15 个工作日内响应</li>
+    </ul>
+
+    <div class="footer-note">本政策提供英文与简体中文版本。若两版本存在差异:中国大陆管辖以中文版为准(PIPL 简体中文版在中国大陆管辖);其他司法辖区以英文版为准。</div>
+  </div>
+</body>
+</html>
