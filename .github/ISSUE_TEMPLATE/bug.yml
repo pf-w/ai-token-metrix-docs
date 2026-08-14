@@ -1,0 +1,117 @@
+name: 🐛 Bug Report / Bug 报告
+description: Report a bug or unexpected behavior in AI Token Metrix / 报告 AI Token Metrix 的 bug 或异常行为
+title: "[Bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the fields below so we can reproduce and fix the issue quickly.
+
+        感谢你花时间报告 bug！请填写下面的字段，方便我们复现和修复问题。
+
+        **Please do not include any personally identifiable information such as API keys, email addresses, or specific file contents.**
+        **请勿在 issue 中包含 API key、邮箱地址、日志正文等个人敏感信息。**
+
+  - type: input
+    id: app-version
+    attributes:
+      label: AI Token Metrix version / App 版本
+      description: You can find it in Settings → About. / 在 设置 → 关于 里查看。
+      placeholder: "e.g. 1.0.0 (Build 2)"
+    validations:
+      required: true
+
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version / macOS 版本
+      description: Apple menu → About This Mac. / 苹果菜单 → 关于本机。
+      placeholder: "e.g. macOS 15.2 (Sequoia)"
+    validations:
+      required: true
+
+  - type: input
+    id: mac-model
+    attributes:
+      label: Mac model / Mac 型号
+      description: Apple menu → About This Mac → chip name. / 苹果菜单 → 关于本机 → 芯片。
+      placeholder: "e.g. MacBook Pro M2, 2023 / Mac mini M4, 2024"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: providers
+    attributes:
+      label: Which AI provider(s) are involved? / 涉及哪个 AI Provider？
+      description: Select all that apply. / 可多选。
+      multiple: true
+      options:
+        - Claude Code
+        - Codex CLI
+        - Kimi CLI
+        - Kimi Code
+        - Gemini CLI
+        - Antigravity
+        - OpenCode
+        - GitHub Copilot CLI
+        - Not provider-specific / 与 Provider 无关
+        - Other / 其他
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: Please list the exact steps that trigger the bug. / 请写下能复现 bug 的具体步骤。
+      placeholder: |
+        1. Open AI Token Metrix from the menu bar
+        2. Open Settings → Providers
+        3. Toggle on Claude Code
+        4. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / 预期行为
+      description: What did you expect to happen? / 你期望发生什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / 实际行为
+      description: What actually happened? Include exact error messages if any. / 实际发生了什么？如有错误信息请一并贴上。
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots / 截图（可选）
+      description: Drag and drop screenshots into this field if they help illustrate the issue. Please blur or redact any sensitive information. / 可将截图拖放到此处。请遮盖任何敏感信息。
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context / 补充信息（可选）
+      description: Anything else that might be relevant — recent changes, workarounds you've tried, related issues. / 任何其他可能相关的信息 —— 最近的变更、你尝试过的绕过方式、相关 issue 等。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation / 确认
+      description: Please confirm the following before submitting. / 提交前请确认以下事项。
+      options:
+        - label: I have searched existing issues and this bug has not been reported yet. / 我已搜索现有 issue，确认此 bug 尚未被报告。
+          required: true
+        - label: I have removed any personally identifiable information from this report. / 我已从此报告中移除任何个人敏感信息。
+          required: true

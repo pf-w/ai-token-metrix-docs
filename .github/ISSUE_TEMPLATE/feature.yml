@@ -1,0 +1,65 @@
+name: 💡 Feature Request / 功能建议
+description: Suggest a new feature or improvement for AI Token Metrix / 为 AI Token Metrix 提议新功能或改进
+title: "[Feature] "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement! The clearer the use case, the better we can evaluate the idea.
+
+        感谢你的建议！使用场景描述得越清楚，越有助于我们评估这个想法。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve? / 解决什么问题？
+      description: Describe the pain point or limitation you're running into. / 描述你遇到的痛点或限制。
+      placeholder: |
+        e.g. "I use both Claude Code and Cursor daily, but AI Token Metrix only tracks Claude Code. I'd like to see combined spend across all my AI tools."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution / 建议的方案
+      description: How do you imagine this working from a user's perspective? / 从用户角度看，你希望这个功能怎么工作？
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered / 考虑过的替代方案（可选）
+      description: What other approaches did you consider? Why did you settle on the one above? / 你考虑过哪些其他方案？为什么最终选了上面这个？
+    validations:
+      required: false
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Who else would benefit from this? / 谁会从这个功能中受益？
+      options:
+        - Just me / 只有我
+        - A few specific users (e.g. developers using a particular tool) / 少数特定用户
+        - Most users / 大多数用户
+        - Not sure / 不确定
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context / 补充信息（可选）
+      description: Screenshots, mockups, links to similar features in other apps, etc. / 截图、mockup、其他 App 里的类似功能链接等。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation / 确认
+      options:
+        - label: I have searched existing issues and this feature has not been suggested yet. / 我已搜索现有 issue，确认此功能尚未被建议过。
+          required: true
