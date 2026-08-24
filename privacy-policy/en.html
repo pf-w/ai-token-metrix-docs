@@ -18,8 +18,8 @@
       <div class="app-brand"><strong>AI Token Metrix</strong> · Privacy Policy</div>
       <h1>Privacy Policy</h1>
       <div class="meta">
-        <div><strong>Effective Date:</strong> 2026-07-14 (Version 1.0)</div>
-        <div><strong>Last Updated:</strong> 2026-07-14</div>
+        <div><strong>Effective Date:</strong> 2026-08-24 (Version 1.1)</div>
+        <div><strong>Last Updated:</strong> 2026-08-24</div>
       </div>
     </header>
 
@@ -56,6 +56,7 @@
         <tr><td>Google Antigravity</td><td><code>~/.gemini/antigravity/.token-monitor/rpc-cache/v1/*.jsonl</code></td></tr>
         <tr><td>OpenCode</td><td><code>~/.local/share/opencode/storage/message/**/*.json</code></td></tr>
         <tr><td>GitHub Copilot CLI</td><td><code>~/.copilot/otel/*.jsonl</code> (only if you have set the environment variable <code>COPILOT_OTEL_ENABLED=true</code>)</td></tr>
+        <tr><td>DeepSeek Harness</td><td><code>~/.dsh/sessions/**/session.jsonl</code> or <code>~/.dsh/sessions/**/session.jsonl.zstd</code> (files are compressed with the <code>zstd</code> library by default and decompressed locally in memory)</td></tr>
       </tbody>
     </table>
 
@@ -97,6 +98,7 @@
       <li><code>https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api/...</code> — foreign-exchange rates</li>
       <li><code>https://api.frankfurter.dev/...</code> — fallback FX rates (European Central Bank data)</li>
       <li><code>https://raw.githubusercontent.com/BerriAI/litellm/...</code> served via jsDelivr / jsdmirror — fallback pricing data</li>
+      <li><code>https://api-docs.deepseek.com/quick_start/pricing/</code> — DeepSeek official pricing page, fetched to keep peak / off-peak tiered pricing accurate</li>
     </ul>
     <p><strong>These requests contain no personal information.</strong> They only download public reference data. Your usage counts, project names, session IDs, or any other information about you are <strong>never uploaded</strong>.</p>
     <p>The App does <strong>not</strong> use analytics SDKs, telemetry SDKs, crash-reporting services, advertising SDKs, or any third-party tracking library.</p>

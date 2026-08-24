@@ -18,8 +18,8 @@
       <div class="app-brand"><strong>AI Token Metrix</strong> · 隐私政策</div>
       <h1>隐私政策</h1>
       <div class="meta">
-        <div><strong>生效日期：</strong>2026-07-14（第 1.0 版）</div>
-        <div><strong>最后更新：</strong>2026-07-14</div>
+        <div><strong>生效日期：</strong>2026-08-24（第 1.1 版）</div>
+        <div><strong>最后更新：</strong>2026-08-24</div>
       </div>
     </header>
 
@@ -57,6 +57,7 @@
         <tr><td>Google Antigravity</td><td><code>~/.gemini/antigravity/.token-monitor/rpc-cache/v1/*.jsonl</code></td></tr>
         <tr><td>OpenCode</td><td><code>~/.local/share/opencode/storage/message/**/*.json</code></td></tr>
         <tr><td>GitHub Copilot CLI</td><td><code>~/.copilot/otel/*.jsonl</code>(仅当您设置了环境变量 <code>COPILOT_OTEL_ENABLED=true</code> 时)</td></tr>
+        <tr><td>DeepSeek Harness</td><td><code>~/.dsh/sessions/**/session.jsonl</code> 或 <code>~/.dsh/sessions/**/session.jsonl.zstd</code>(文件默认使用 <code>zstd</code> 库压缩,本应用在本机内存中解压)</td></tr>
       </tbody>
     </table>
 
@@ -98,6 +99,7 @@
       <li><code>https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api/...</code> —— 外汇汇率</li>
       <li><code>https://api.frankfurter.dev/...</code> —— 备用外汇汇率(数据源为欧洲中央银行)</li>
       <li><code>https://raw.githubusercontent.com/BerriAI/litellm/...</code> 经 jsDelivr / jsdmirror 转发 —— 备用定价数据</li>
+      <li><code>https://api-docs.deepseek.com/quick_start/pricing/</code> —— DeepSeek 官方定价页,用于保持峰谷分档价格同步</li>
     </ul>
     <p><strong>这些请求不包含任何个人信息。</strong>它们只是下载公开的参考数据。您的用量数据、项目名、会话 ID 或任何关于您的信息<strong>从不被上传</strong>。</p>
     <p>本应用<strong>不使用</strong>任何分析 SDK、遥测 SDK、崩溃上报 SDK、广告 SDK 或第三方追踪库。</p>
